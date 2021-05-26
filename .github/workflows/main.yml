@@ -48,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v2.2.3
         with:
           name: ToolsUtilitiesStandard
-          path: bin\x86\${{ matrix.configuration }}\netstandard2.0
+          path: ToolsUtilities\bin\x86\${{ matrix.configuration }}\netstandard2.0
