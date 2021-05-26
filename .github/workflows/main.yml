@@ -40,12 +40,12 @@ jobs:
       - name: Restore NuGet Packages
         run: nuget restore "ToolsUtilities\ToolsUtilitiesStandard.csproj"
 
-      - name: Build test project
-        run: msbuild "ToolsUtilities\ToolsUtilitiesStandard.csproj" /p:Configuration=$env:Configuration
+      - name: Build ToolsUtilitiesStandard project
+        run: msbuild "ToolsUtilities\ToolsUtilitiesStandard.csproj" /p:Configuration=${{ matrix.configuration }}
         # /p:Platform="Any CPU" /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2.2.3
         with:
           name: ToolsUtilitiesStandard
-          path: bin\x86\$env:Configuration\netstandard2.0
+          path: bin\x86\${{ matrix.configuration }}\netstandard2.0
