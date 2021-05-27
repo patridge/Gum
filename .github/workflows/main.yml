@@ -49,4 +49,4 @@ jobs:
         uses: actions/upload-artifact@v2.2.3
         with:
           name: ToolsUtilitiesStandard
-          path: ${{ github.workspace }}\ToolsUtilities\bin\${{ matrix.platform }}\${{ matrix.configuration }}\netstandard2.0\
+          path: ${{ github.workspace }}\ToolsUtilities\bin\${{ matrix.platform }}\netstandard2.0\
