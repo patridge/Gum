@@ -22,6 +22,7 @@ jobs:
     strategy:
       matrix:
         configuration: [Debug] #, Release]
+        platform: [x86]
 
     # The type of runner that the job will run on
     runs-on: windows-latest
@@ -42,10 +43,10 @@ jobs:
 
       - name: Build ToolsUtilitiesStandard project
         run: msbuild "ToolsUtilities\ToolsUtilitiesStandard.csproj" /p:Configuration=${{ matrix.configuration }}
-        # /p:Platform="Any CPU" /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+        # /p:Platform="${{ matrix.platform }}" /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2.2.3
         with:
           name: ToolsUtilitiesStandard
-          path: ToolsUtilities\bin\x86\${{ matrix.configuration }}\netstandard2.0
+          path: ToolsUtilities\bin\${{ matrix.platform }}\${{ matrix.configuration }}\netstandard2.0\
